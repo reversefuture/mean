@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}layout{% endblock %}</title>
+   {% block headBlock %}
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+    {% endblock %}
+</head>
+<body>
+
+{% block content %}
+<h1>这里是layout中的h1标签</h1>
+<p>这里是layout 中的 p标签</p>
+{% endblock %}
+
+</body>
+</html>

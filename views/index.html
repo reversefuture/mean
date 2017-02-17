@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{title}}{% endblock %}
+{% block headBlock %}
+{% parent %}
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+{% endblock  %}
+
+{% block content %}
+<h1>Contact list appp</h1>
+<div ng-app="indexApp" ng-controller="indexCtrl" class="container">
+    <h1>Contact List App</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Number</th>
+                <th>Add</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" class = "form-control" ng-model="contact.name"></td>
+                <td><input type="text" class = "form-control" ng-model="contact.email"></td>
+                <td><input type="text" class = "form-control" ng-model="contact.number"></td>
+                <td><button class="button btn-primary" ng-click="addContact()">Add Contact</button></td>
+                <td><button class="button btn-info" ng-click="update()">Updata</button>
+                    <button class="button btn-info" ng-click="deselect()">Clear</button>
+                </td>
+            </tr>
+            <tr ng-repeat="contact in contactList">
+                <td>{% raw %}{{contact.name}}{% endraw %}</td>
+                <td>{% raw %}{{contact.email}}{% endraw %}</td>
+                <td>{% raw %}{{contact.number}}{% endraw %}</td>
+                <td><button class="button btn-danger" ng-click="remove(contact._id)">Remove</button></td>
+                <td><button class="button btn-warning" ng-click="edit(contact._id)">Edit</button></td>
+            </tr>
+        </tbody>
+        
+    </table>
+    <p>Input something in the input box:</p>
+    <p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
+    <h1>Hello        {% raw %}{{name}}{% endraw %}</h1>
+
+</div>
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/angular.min.js"></script>
+<script src="/js/controllers/indexCtrl.js"></script>
+
+
+{% endblock %}
